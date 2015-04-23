@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import com.tywilly.WillyEngine.display.Display;
 import com.tywilly.WillyEngine.entity.IEntity;
 import com.tywilly.WillyEngine.input.InputListener;
+import com.tywilly.WillyEngine.update.Updateable;
 
 
 public class Renderer extends JPanel{
@@ -43,6 +44,11 @@ public class Renderer extends JPanel{
 		
 		for(int i=0;i<ents.size();i++){
 			IEntity ent = ents.get(i);
+			
+			
+			if(ent instanceof Updateable){
+			    ((Updateable) ent).update();
+			}
 			
 			ent.paint(g);
 			
