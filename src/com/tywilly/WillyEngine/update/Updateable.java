@@ -10,6 +10,6 @@ package com.tywilly.WillyEngine.update;
 public interface Updateable
 {
 
-    public void update();
+    public void update(long mili);
     
 }

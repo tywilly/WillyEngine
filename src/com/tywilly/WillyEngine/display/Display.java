@@ -4,7 +4,10 @@ import java.awt.Rectangle;
 
 import javax.swing.JFrame;
 
+import com.tywilly.WillyEngine.entity.Entity;
 import com.tywilly.WillyEngine.graphics.Renderer;
+import com.tywilly.WillyEngine.scene.SceneManager;
+import com.tywilly.WillyEngine.update.Updateable;
 
 public class Display extends Thread implements Runnable{
 
@@ -17,6 +20,10 @@ public class Display extends Thread implements Runnable{
 	private static Display dis;
 	
 	private boolean isRunning = true;
+	
+	private long startTime = 0;
+	
+	private long delta = 0;
 	
 	public static void setTitle(String title){
 		frame.setTitle(title);
@@ -44,7 +51,19 @@ public class Display extends Thread implements Runnable{
 	public void run(){
 		while(isRunning){
 			
+			startTime = System.currentTimeMillis();
 			
+			for(int i=0;i<SceneManager.getCurrentScene().ents.size();i++){
+				
+				Entity ent = SceneManager.getCurrentScene().ents.get(i);
+				
+				if(ent instanceof Updateable){
+					((Updateable) ent).update(delta);
+				}
+				
+			}
+			
+			delta = System.currentTimeMillis() - startTime;
 			
 			r.repaint();
 		}
