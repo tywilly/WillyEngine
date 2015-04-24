@@ -66,6 +66,7 @@ public class Display extends Thread implements Runnable{
 			delta = System.currentTimeMillis() - startTime;
 			
 			r.repaint();
+			
 		}
 	}
 	

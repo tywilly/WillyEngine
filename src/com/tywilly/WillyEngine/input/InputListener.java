@@ -8,6 +8,10 @@ import java.awt.event.MouseMotionListener;
 
 public class InputListener implements KeyListener, MouseListener, MouseMotionListener{
 
+	
+	
+	
+	
 	@Override
 	public void mouseDragged(MouseEvent arg0) {
 		// TODO Auto-generated method stub
