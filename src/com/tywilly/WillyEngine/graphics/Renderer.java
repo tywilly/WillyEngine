@@ -5,7 +5,6 @@ import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
-import com.tywilly.WillyEngine.display.Display;
 import com.tywilly.WillyEngine.entity.IEntity;
 import com.tywilly.WillyEngine.input.InputListener;
 import com.tywilly.WillyEngine.scene.SceneManager;
@@ -37,7 +36,7 @@ public class Renderer extends JPanel{
 		super.paintComponent(g);
 	
 		g.setColor(Color.BLACK);
-		g.fillRect(0, 0, Display.SCREEN_WIDTH, Display.SCREEN_HEIGHT);
+		g.fillRect(0, 0, this.getWidth(), this.getHeight());
 		
 		for(int i=0;i<SceneManager.getCurrentScene().ents.size();i++){
 			IEntity ent = SceneManager.getCurrentScene().ents.get(i);
