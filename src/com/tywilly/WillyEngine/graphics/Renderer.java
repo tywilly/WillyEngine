@@ -12,8 +12,6 @@ import com.tywilly.WillyEngine.scene.SceneManager;
 
 public class Renderer extends JPanel{
 	
-	int x = 0;
-	
 	/**
 	 * 
 	 */
@@ -46,5 +44,7 @@ public class Renderer extends JPanel{
 		}
 		
 	}
+	
+	
 	
 }
