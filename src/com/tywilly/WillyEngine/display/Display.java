@@ -5,6 +5,7 @@ import java.awt.Rectangle;
 import javax.swing.JFrame;
 
 import com.tywilly.WillyEngine.graphics.Renderer;
+import com.tywilly.WillyEngine.input.InputListener;
 
 public class Display{
 
@@ -19,6 +20,12 @@ public class Display{
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		frame.add(renderer);
+		
+		InputListener in = new InputListener();
+		
+		frame.addKeyListener(in);
+		frame.addMouseListener(in);
+		frame.addMouseMotionListener(in);
 		
 		frame.setVisible(true);
 		

@@ -6,7 +6,6 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 
 import com.tywilly.WillyEngine.entity.IEntity;
-import com.tywilly.WillyEngine.input.InputListener;
 import com.tywilly.WillyEngine.scene.SceneManager;
 
 
@@ -19,11 +18,11 @@ public class Renderer extends JPanel{
 	
 	public Renderer(){
 		
-		InputListener in = new InputListener();
-		
-		this.addKeyListener(in);
-		this.addMouseListener(in);
-		this.addMouseMotionListener(in);
+//		InputListener in = new InputListener();
+//		
+//		this.addKeyListener(in);
+//		this.addMouseListener(in);
+//		this.addMouseMotionListener(in);
 		
 	}
 
