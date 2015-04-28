@@ -25,6 +25,10 @@ public class Texture {
 		}
 	}
 	
+	public boolean isLoaded(){
+		return img != null;
+	}
+	
 	public BufferedImage getImage(){
 		return img;
 	}

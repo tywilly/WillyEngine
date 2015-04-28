@@ -1,6 +1,8 @@
 package com.tywilly.WillyEngine.display;
 
+import java.awt.Dimension;
 import java.awt.Rectangle;
+import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 
@@ -18,6 +20,10 @@ public class Display{
 		frame.setBounds(new Rectangle(width, height));
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+		
+		frame.setLocation(((int)screen.getWidth()/2) - (width/2), ((int)screen.getHeight()/2) - (height/2));
 		
 		frame.add(renderer);
 		
