@@ -4,10 +4,12 @@ import java.util.ArrayList;
 
 public class TextureManager {
 
-	ArrayList<Texture> textures = new ArrayList<Texture>();
+	static ArrayList<Texture> textures = new ArrayList<Texture>();
 	
-	public void addTexture(Texture text){
+	public static Texture createTexture(String location){
+		Texture text = new Texture(location);
 		textures.add(text);
+		return text;
 	}
 	
 	public Texture getTexture(String location){

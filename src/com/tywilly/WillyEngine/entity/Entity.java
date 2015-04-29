@@ -22,4 +22,20 @@ public class Entity implements IEntity{
 		
 	}
 
+	public void setX(int x){
+		xLoc = x;
+	}
+	
+	public int getX(){
+		return xLoc;
+	}
+	
+	public void setY(int y){
+		yLoc = y;
+	}
+	
+	public int getY(){
+		return yLoc;
+	}
+	
 }
