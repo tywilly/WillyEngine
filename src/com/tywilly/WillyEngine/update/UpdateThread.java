@@ -12,6 +12,7 @@ public class UpdateThread extends Thread implements Runnable {
 	private long startTime = 0;
 	private long delta = 0;
 	
+	private long tpsStartTime = System.currentTimeMillis();
 	private int tps = 0;
 	
 	Renderer renderer;
@@ -28,7 +29,7 @@ public class UpdateThread extends Thread implements Runnable {
 		// TODO Auto-generated method stub
 
 		while (isRunning) {
-
+			
 			startTime = System.currentTimeMillis();
 
 			for (int i = 0; i < SceneManager.getCurrentScene().ents.size(); i++) {
@@ -51,7 +52,15 @@ public class UpdateThread extends Thread implements Runnable {
 			delta = System.currentTimeMillis() - startTime;
 
 			renderer.repaint();
-
+			
+			if(System.currentTimeMillis() - tpsStartTime >= 1000){
+				Display.TPS = tps;
+				tps = 0;
+				tpsStartTime = System.currentTimeMillis();
+			}
+			
+			tps++;
+			
 		}
 
 	}

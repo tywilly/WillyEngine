@@ -1,5 +1,6 @@
 package com.tywilly.WillyEngine.entity.text;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 
@@ -9,7 +10,7 @@ public class Text extends Entity{
 
 	String text = "";
 	
-	Font font = new Font("arial", Font.PLAIN, 12);
+	Font font = new Font("Arial", Font.PLAIN, 12);
 	
 	public Text(int x, int y, int size, String text) {
 		super(x, y, 0, 0);
@@ -25,6 +26,8 @@ public class Text extends Entity{
 		// TODO Auto-generated method stub
 		
 		g.setFont(font);
+		
+		g.setColor(Color.WHITE);
 		
 		g.drawString(text, xLoc, yLoc);
 		

@@ -14,6 +14,8 @@ public class Display{
 	private JFrame frame = new JFrame();
 	private Renderer renderer = new Renderer();
 	
+	public static int TPS = 0;
+	
 	public Display(String title, int width, int height){
 		
 		frame.setTitle(title);
