@@ -3,6 +3,7 @@ package com.tywilly.WillyEngine.entity.sprite;
 import java.awt.Graphics;
 import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
+import java.awt.image.BufferedImage;
 
 import com.tywilly.WillyEngine.entity.Entity;
 import com.tywilly.WillyEngine.texture.Texture;
@@ -10,18 +11,23 @@ import com.tywilly.WillyEngine.texture.Texture;
 public class Sprite extends Entity {
 
 	Texture texture;
+	BufferedImage drawImg;
 
 	public Sprite(int x, int y, int height, int width, Texture texture) {
 		super(x, y, height, width);
 
 		this.texture = texture;
-
+		
 	}
 
 	@Override
 	public void paint(Graphics g) {
 		// TODO Auto-generated method stub
 
+	    if(drawImg == null && texture.isLoaded()){
+	        drawImg = texture.getImage();
+	    }
+	    
 		// g.drawImage(texture.getImage(), this.xLoc, this.yLoc, null);
 
 		
@@ -30,7 +36,7 @@ public class Sprite extends Entity {
 		// this.width, yLoc + this.height, 0, 0, texture.getImage().getWidth(),
 		// texture.getImage().getWidth(), null);
 
-		g.drawImage(texture.getImage(), xLoc, yLoc, xLoc
+		g.drawImage(drawImg, xLoc, yLoc, xLoc
 				+ this.width, yLoc + this.height, 0, 0, texture.getImage()
 				.getWidth(), texture.getImage().getWidth(), null);
 
@@ -50,15 +56,12 @@ public class Sprite extends Entity {
 		super.setRotation(angle);
 		
 		AffineTransform tx = AffineTransform.getRotateInstance(
-				Math.toRadians(rotAngle), xLoc + texture.getImage().getWidth()/2, yLoc + texture.getImage().getHeight()/2);
+				Math.toRadians(rotAngle), texture.getImage().getWidth()/2, texture.getImage().getHeight()/2);
 
 		AffineTransformOp op = new AffineTransformOp(tx,
 				AffineTransformOp.TYPE_BILINEAR);
 		
-		texture.setImage(op.filter(texture.getImage(), null));
-		
-		System.out.println(texture.getImage().getHeight());
-		
+		drawImg = op.filter(texture.getImage(), null);
 	}
 
 	
