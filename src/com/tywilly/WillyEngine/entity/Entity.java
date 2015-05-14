@@ -9,6 +9,9 @@ public class Entity implements IEntity{
 	protected int height = 0;
 	protected int width = 0;
 	
+	protected int rotAngle = 0;
+	
+	
 	public Entity(int x,int y, int height, int width){
 		this.xLoc = x;
 		this.yLoc = y;
@@ -36,6 +39,22 @@ public class Entity implements IEntity{
 	
 	public int getY(){
 		return yLoc;
+	}
+	
+	public int getWidth(){
+		return width;
+	}
+	
+	public int getHeight(){
+		return height;
+	}
+	
+	public int getRotation(){
+		return rotAngle;
+	}
+	
+	public void setRotation(int angle){
+		rotAngle = angle;
 	}
 	
 }

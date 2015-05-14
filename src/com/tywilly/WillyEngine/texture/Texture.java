@@ -37,4 +37,8 @@ public class Texture {
 		return location;
 	}
 	
+	public void setImage(BufferedImage img){
+		this.img = img;
+	}
+	
 }
