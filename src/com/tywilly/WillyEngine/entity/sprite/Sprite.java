@@ -8,62 +8,69 @@ import java.awt.image.BufferedImage;
 import com.tywilly.WillyEngine.entity.Entity;
 import com.tywilly.WillyEngine.texture.Texture;
 
-public class Sprite extends Entity {
+public class Sprite extends Entity
+{
 
-	Texture texture;
-	BufferedImage drawImg;
+    Texture texture;
 
-	public Sprite(int x, int y, int height, int width, Texture texture) {
-		super(x, y, height, width);
+    BufferedImage drawImg;
 
-		this.texture = texture;
-		
-	}
+    public Sprite(int x, int y, int height, int width, Texture texture)
+    {
+        super(x, y, height, width);
 
-	@Override
-	public void paint(Graphics g) {
-		// TODO Auto-generated method stub
+        this.texture = texture;
 
-	    if(drawImg == null && texture.isLoaded()){
-	        drawImg = texture.getImage();
-	    }
-	    
-		// g.drawImage(texture.getImage(), this.xLoc, this.yLoc, null);
+    }
 
-		
+    @Override
+    public void paint(Graphics g)
+    {
+        // TODO Auto-generated method stub
 
-		// g.drawImage(op.filter(texture.getImage(), null), xLoc, yLoc, xLoc +
-		// this.width, yLoc + this.height, 0, 0, texture.getImage().getWidth(),
-		// texture.getImage().getWidth(), null);
+        if (drawImg == null && texture.isLoaded())
+        {
+            drawImg = texture.getImage();
+        }
 
-		g.drawImage(drawImg, xLoc, yLoc, xLoc
-				+ this.width, yLoc + this.height, 0, 0, texture.getImage()
-				.getWidth(), texture.getImage().getWidth(), null);
+        // g.drawImage(texture.getImage(), this.xLoc, this.yLoc, null);
 
-	}
+        // g.drawImage(op.filter(texture.getImage(), null), xLoc, yLoc, xLoc +
+        // this.width, yLoc + this.height, 0, 0, texture.getImage().getWidth(),
+        // texture.getImage().getWidth(), null);
 
-	public Texture getTexture() {
-		return texture;
-	}
+        g.drawImage(drawImg, xLoc, yLoc, xLoc + this.width, yLoc + this.height,
+                0, 0, drawImg.getWidth(), drawImg.getWidth(), null);
 
-	public void setTexure(Texture texture) {
-		this.texture = texture;
-	}
+    }
 
-	@Override
-	public void setRotation(int angle) {
-		// TODO Auto-generated method stub
-		super.setRotation(angle);
-		
-		AffineTransform tx = AffineTransform.getRotateInstance(
-				Math.toRadians(rotAngle), texture.getImage().getWidth()/2, texture.getImage().getHeight()/2);
+    public Texture getTexture()
+    {
+        return texture;
+    }
 
-		AffineTransformOp op = new AffineTransformOp(tx,
-				AffineTransformOp.TYPE_BILINEAR);
-		
-		drawImg = op.filter(texture.getImage(), null);
-	}
+    public void setTexure(Texture texture)
+    {
+        this.texture = texture;
 
-	
-	
+        this.drawImg = null;
+
+    }
+
+    @Override
+    public void setRotation(int angle)
+    {
+        // TODO Auto-generated method stub
+        super.setRotation(angle);
+
+        AffineTransform tx = AffineTransform.getRotateInstance(
+                Math.toRadians(rotAngle), texture.getImage().getWidth() / 2,
+                texture.getImage().getHeight() / 2);
+
+        AffineTransformOp op = new AffineTransformOp(tx,
+                AffineTransformOp.TYPE_BILINEAR);
+
+        drawImg = op.filter(texture.getImage(), null);
+    }
+
 }
