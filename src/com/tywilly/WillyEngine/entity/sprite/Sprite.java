@@ -40,8 +40,8 @@ public class Sprite extends Entity
         // texture.getImage().getWidth(), null);
 
         g.drawImage(drawImg, xLoc, yLoc, xLoc + this.width, yLoc + this.height,
-                0, 0, drawImg.getWidth(), drawImg.getWidth(), null);
-
+                0, 0, drawImg.getWidth(), drawImg.getHeight(), null);
+        
     }
 
     public Texture getTexture()
