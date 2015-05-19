@@ -15,7 +15,7 @@ public class Sprite extends Entity
 
     BufferedImage drawImg;
 
-    public Sprite(int x, int y, int height, int width, Texture texture)
+    public Sprite(float x, float y, int height, int width, Texture texture)
     {
         super(x, y, height, width);
 
@@ -39,7 +39,7 @@ public class Sprite extends Entity
         // this.width, yLoc + this.height, 0, 0, texture.getImage().getWidth(),
         // texture.getImage().getWidth(), null);
 
-        g.drawImage(drawImg, xLoc, yLoc, xLoc + this.width, yLoc + this.height,
+        g.drawImage(drawImg, (int)xLoc, (int)yLoc, (int)xLoc + this.width, (int)yLoc + this.height,
                 0, 0, drawImg.getWidth(), drawImg.getHeight(), null);
         
     }

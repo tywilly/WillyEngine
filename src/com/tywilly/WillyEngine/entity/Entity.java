@@ -4,15 +4,15 @@ import java.awt.Graphics;
 
 public class Entity implements IEntity{
 
-	protected int xLoc = 0;
-	protected int yLoc = 0;
+	protected float xLoc = 0;
+	protected float yLoc = 0;
 	protected int height = 0;
 	protected int width = 0;
 	
 	protected int rotAngle = 0;
 	
 	
-	public Entity(int x,int y, int height, int width){
+	public Entity(float x,float y, int height, int width){
 		this.xLoc = x;
 		this.yLoc = y;
 		this.height = height;
@@ -25,19 +25,19 @@ public class Entity implements IEntity{
 		
 	}
 
-	public void setX(int x){
+	public void setX(float x){
 		xLoc = x;
 	}
 	
-	public int getX(){
+	public float getX(){
 		return xLoc;
 	}
 	
-	public void setY(int y){
+	public void setY(float y){
 		yLoc = y;
 	}
 	
-	public int getY(){
+	public float getY(){
 		return yLoc;
 	}
 	

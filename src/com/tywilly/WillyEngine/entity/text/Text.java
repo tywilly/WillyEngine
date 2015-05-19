@@ -29,7 +29,7 @@ public class Text extends Entity{
 		
 		g.setColor(Color.WHITE);
 		
-		g.drawString(text, xLoc, yLoc);
+		g.drawString(text, (int)xLoc, (int)yLoc);
 		
 	}
 	
