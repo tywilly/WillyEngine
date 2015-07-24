@@ -8,12 +8,14 @@ public class InputAction{
 	int mouseX;
 	int mouseY;
 	char keyCode;
+	int keyNum;
 	
-	public InputAction(ActionType action,char keyCode){
+	public InputAction(ActionType action,char keyCode, int keyNum){
 		this.action = action;
 		this.mouseX = 0;
 		this.mouseY = 0;
 		this.keyCode = keyCode;
+		this.keyNum = keyNum;
 	}
 	
 	public InputAction(ActionType action, int mouseX, int mouseY, char keyCode){
@@ -41,6 +43,10 @@ public class InputAction{
 	
 	public char getKeyCode(){
 		return keyCode;
+	}
+	
+	public int getKeyNum(){
+		return keyNum;
 	}
 	
 	public enum ActionType{

@@ -57,14 +57,14 @@ public class InputListener implements KeyListener, MouseListener, MouseMotionLis
 	@Override
 	public void keyPressed(KeyEvent arg0) {
 		// TODO Auto-generated method stub
-		action = new InputAction(ActionType.KEYBOARD_DOWN, arg0.getKeyChar());
+		action = new InputAction(ActionType.KEYBOARD_DOWN, arg0.getKeyChar(), arg0.getKeyCode());
 		actionEvent(action);
 	}
 
 	@Override
 	public void keyReleased(KeyEvent arg0) {
 		// TODO Auto-generated method stub
-		action = new InputAction(ActionType.KEYBOARD_UP, arg0.getKeyChar());
+		action = new InputAction(ActionType.KEYBOARD_UP, arg0.getKeyChar(), arg0.getKeyCode());
 		actionEvent(action);
 	}
 

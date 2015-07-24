@@ -43,7 +43,7 @@ public class UpdateThread extends Thread implements Runnable {
 			}
 
 			try {
-				Thread.sleep(5);
+				Thread.sleep(20);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
