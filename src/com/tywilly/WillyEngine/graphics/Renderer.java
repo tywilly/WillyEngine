@@ -1,10 +1,14 @@
 package com.tywilly.WillyEngine.graphics;
 
+import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
+import com.tywilly.WillyEngine.Engine;
 import com.tywilly.WillyEngine.entity.IEntity;
 import com.tywilly.WillyEngine.scene.SceneManager;
 
@@ -25,13 +29,13 @@ public class Renderer extends JPanel{
 //		this.addMouseMotionListener(in);
 		
 	}
-
+	
 	@Override
-	protected void paintComponent(Graphics g) {
+	public void paint(Graphics g) {
 		// TODO Auto-generated method stub
 		
-		super.paintComponent(g);
-	
+		//super.paintComponent(g);
+		
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
 		
@@ -42,8 +46,7 @@ public class Renderer extends JPanel{
 			
 		}
 		
-	}
-	
-	
-	
+		repaint();
+		
+	}	
 }
