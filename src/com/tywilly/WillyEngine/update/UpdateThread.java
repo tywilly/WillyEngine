@@ -1,5 +1,7 @@
 package com.tywilly.WillyEngine.update;
 
+import java.util.ArrayList;
+
 import com.tywilly.WillyEngine.display.Display;
 import com.tywilly.WillyEngine.entity.Entity;
 import com.tywilly.WillyEngine.graphics.Renderer;
@@ -32,12 +34,20 @@ public class UpdateThread extends Thread implements Runnable {
 
 			startTime = System.currentTimeMillis();
 
-			for (int i = 0; i < SceneManager.getCurrentScene().ents.size(); i++) {
+			for (int i = 0; i < SceneManager.getCurrentScene().getEntitysList()
+					.size(); i++) {
 
-				Entity ent = SceneManager.getCurrentScene().ents.get(i);
+				ArrayList<Entity> layer = SceneManager.getCurrentScene()
+						.getLayerList(i);
 
-				if (ent instanceof Updateable) {
-					((Updateable) ent).update(delta);
+				for (int x = 0; x < layer.size(); x++) {
+
+					Entity ent = layer.get(x);
+
+					if (ent instanceof Updateable) {
+						((Updateable) ent).update(delta);
+					}
+
 				}
 
 			}
@@ -55,7 +65,7 @@ public class UpdateThread extends Thread implements Runnable {
 
 			delta = System.currentTimeMillis() - startTime;
 
-			//renderer.repaint();
+			// renderer.repaint();
 
 			if (System.currentTimeMillis() - tpsStartTime >= 1000) {
 				Display.TPS = tps;

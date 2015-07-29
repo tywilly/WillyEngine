@@ -12,8 +12,8 @@ public class Text extends Entity{
 	
 	Font font = new Font("Arial", Font.PLAIN, 12);
 	
-	public Text(int x, int y, int size, String text) {
-		super(x, y, 0, 0);
+	public Text(int x, int y, int layer, int size, String text) {
+		super(x, y, layer, 0, 0);
 		
 		this.text = text;
 	

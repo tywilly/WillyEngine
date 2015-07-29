@@ -9,7 +9,7 @@ public class DebugInfo extends Text implements Updateable{
 	int currTick = 0;
 	
 	public DebugInfo() {
-		super(0, 18, 20, "FPS: " + Display.TPS);
+		super(0, 18, 4, 20, "FPS: " + Display.TPS);
 		// TODO Auto-generated constructor stub
 	}
 

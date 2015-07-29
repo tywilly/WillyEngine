@@ -6,15 +6,17 @@ public class Entity implements IEntity{
 
 	protected float xLoc = 0;
 	protected float yLoc = 0;
+	protected int layer = 0;
 	protected int height = 0;
 	protected int width = 0;
 	
 	protected int rotAngle = 0;
 	
 	
-	public Entity(float x,float y, int height, int width){
+	public Entity(float x,float y,int layer, int height, int width){
 		this.xLoc = x;
 		this.yLoc = y;
+		this.layer = layer;
 		this.height = height;
 		this.width = width;
 	}
@@ -39,6 +41,14 @@ public class Entity implements IEntity{
 	
 	public float getY(){
 		return yLoc;
+	}
+	
+	public void setLayer(int layer){
+		this.layer = layer;
+	}
+	
+	public int getLayer(){
+		return layer;
 	}
 	
 	public void setWidth(int width){
