@@ -22,6 +22,15 @@ public class SceneManager {
 
 		currentScene.onCreate();
 	}
+	
+	public static Scene swapScene(Scene newScene){
+		
+		Scene rScene = currentScene;
+		
+		currentScene = newScene;
+		
+		return rScene;
+	}
 
 	public static Scene getCurrentScene() {
 		return currentScene;
