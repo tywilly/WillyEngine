@@ -1,21 +1,20 @@
 package com.tywilly.WillyEngine.graphics;
 
-import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
-import com.tywilly.WillyEngine.Engine;
 import com.tywilly.WillyEngine.entity.Entity;
-import com.tywilly.WillyEngine.entity.IEntity;
 import com.tywilly.WillyEngine.scene.SceneManager;
 
 public class Renderer extends JPanel {
-
+	
+	private long startTime;
+	
+	private static int fps = 0;
+	
 	/**
 	 * 
 	 */
@@ -31,12 +30,18 @@ public class Renderer extends JPanel {
 
 	}
 
+	public static int getFPS(){
+		return fps;
+	}
+	
 	@Override
 	public void paint(Graphics g) {
 		// TODO Auto-generated method stub
 
 		// super.paintComponent(g);
 
+		startTime = System.currentTimeMillis();
+		
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
 
@@ -56,7 +61,9 @@ public class Renderer extends JPanel {
 
 		}
 
-		repaint();
+		
+		
+		//repaint();
 
 	}
 }

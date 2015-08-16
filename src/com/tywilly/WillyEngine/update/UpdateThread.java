@@ -65,7 +65,7 @@ public class UpdateThread extends Thread implements Runnable {
 
 			delta = System.currentTimeMillis() - startTime;
 
-			// renderer.repaint();
+			 renderer.repaint();
 
 			if (System.currentTimeMillis() - tpsStartTime >= 1000) {
 				Display.TPS = tps;

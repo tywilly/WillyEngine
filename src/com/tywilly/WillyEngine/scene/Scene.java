@@ -7,12 +7,19 @@ import com.tywilly.WillyEngine.entity.Entity;
 public abstract class Scene {
 
 	private ArrayList<ArrayList<Entity>> layers = new ArrayList<ArrayList<Entity>>();
+	private boolean isLoaded = false;
 	
 	public Scene(){
 		layers.add(new ArrayList<Entity>());
 	}
 	
-	public abstract void onCreate();
+	public void onCreateSuper(){
+		onCreate();
+		isLoaded = true;
+		System.out.println("Create!");
+	}
+	
+	protected abstract void onCreate();
 	
 	public void addEntity(Entity ent){
 		
@@ -20,7 +27,6 @@ public abstract class Scene {
 			
 			for(int i=0;i<ent.getLayer();i++){
 				layers.add(new ArrayList<Entity>());
-				System.out.println("Added!");
 			}
 			
 		}
@@ -39,6 +45,10 @@ public abstract class Scene {
 	
 	public ArrayList<ArrayList<Entity>> getEntitysList(){
 		return layers;
+	}
+	
+	public boolean isLoaded(){
+		return isLoaded;
 	}
 	
 }

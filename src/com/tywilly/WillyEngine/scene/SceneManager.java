@@ -20,14 +20,26 @@ public class SceneManager {
 	public static void loadScene(Scene scene) {
 		currentScene = scene;
 
-		currentScene.onCreate();
+		if(!currentScene.isLoaded()){
+			currentScene.onCreateSuper();
+		}
+		
 	}
 	
+	/**
+	 * Swap current scene with a new scene
+	 * @param newScene A new scene object
+	 * @return returns the old scene object
+	 */
 	public static Scene swapScene(Scene newScene){
 		
 		Scene rScene = currentScene;
 		
 		currentScene = newScene;
+		
+		if(!currentScene.isLoaded()){
+			currentScene.onCreateSuper();
+		}
 		
 		return rScene;
 	}
