@@ -42,10 +42,14 @@ public class UpdateThread extends Thread implements Runnable {
 
 				for (int x = 0; x < layer.size(); x++) {
 
-					Entity ent = layer.get(x);
+					if (x < layer.size()) {
 
-					if (ent instanceof Updateable) {
-						((Updateable) ent).update(delta);
+						Entity ent = layer.get(x);
+
+						if (ent instanceof Updateable) {
+							((Updateable) ent).update(delta);
+						}
+
 					}
 
 				}
@@ -65,7 +69,7 @@ public class UpdateThread extends Thread implements Runnable {
 
 			delta = System.currentTimeMillis() - startTime;
 
-			 renderer.repaint();
+			renderer.repaint();
 
 			if (System.currentTimeMillis() - tpsStartTime >= 1000) {
 				Display.TPS = tps;
