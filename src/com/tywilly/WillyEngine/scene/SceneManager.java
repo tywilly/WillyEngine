@@ -44,7 +44,8 @@ public class SceneManager {
 		return rScene;
 	}
 
-	public static Scene getCurrentScene() {
+	public synchronized static Scene getCurrentScene() {
+		System.out.println(Thread.currentThread().getName());
 		return currentScene;
 	}
 

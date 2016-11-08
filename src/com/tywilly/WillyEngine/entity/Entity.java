@@ -13,7 +13,7 @@ public class Entity implements IEntity{
 	protected int rotAngle = 0;
 	
 	
-	public Entity(float x,float y,int layer, int height, int width){
+	public Entity(float x,float y,int layer, int width, int height){
 		this.xLoc = x;
 		this.yLoc = y;
 		this.layer = layer;

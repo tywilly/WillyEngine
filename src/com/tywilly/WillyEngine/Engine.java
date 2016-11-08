@@ -13,7 +13,7 @@ public class Engine {
 		
 		Engine.display = display;
 		
-		updateThread = new UpdateThread(display);
+		updateThread = new UpdateThread();
 		
 	}
 	

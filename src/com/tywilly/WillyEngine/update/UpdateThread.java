@@ -14,16 +14,8 @@ public class UpdateThread extends Thread implements Runnable {
 	private long startTime = 0;
 	private long delta = 0;
 
-	private long tpsStartTime = System.currentTimeMillis();
-	private int tps = 0;
-
-	Renderer renderer;
-
-	public UpdateThread(Display display) {
-		// TODO Auto-generated constructor stub
-
-		this.renderer = display.getRenderer();
-
+	public UpdateThread() {
+		this.setName("Update Thread");
 	}
 
 	@Override
@@ -56,29 +48,8 @@ public class UpdateThread extends Thread implements Runnable {
 
 			}
 
-			try {
-
-				long sleepTime = Math.min(1000, Math.max(
-						16 - (System.currentTimeMillis() - startTime), 0));
-
-				Thread.sleep(sleepTime);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
 			delta = System.currentTimeMillis() - startTime;
-
-			renderer.repaint();
-
-			if (System.currentTimeMillis() - tpsStartTime >= 1000) {
-				Display.TPS = tps;
-				tps = 0;
-				tpsStartTime = System.currentTimeMillis();
-			}
-
-			tps++;
-
+			
 		}
 
 	}

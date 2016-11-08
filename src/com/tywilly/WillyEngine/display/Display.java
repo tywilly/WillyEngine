@@ -6,13 +6,14 @@ import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 
+import com.tywilly.WillyEngine.graphics.RenderThread;
 import com.tywilly.WillyEngine.graphics.Renderer;
 import com.tywilly.WillyEngine.input.InputListener;
 
 public class Display{
 
 	private JFrame frame = new JFrame();
-	private Renderer renderer = new Renderer();
+	private RenderThread renderThread = new RenderThread(new Renderer());
 	
 	public static int TPS = 0;
 	
@@ -27,7 +28,9 @@ public class Display{
 		
 		frame.setLocation(((int)screen.getWidth()/2) - (width/2), ((int)screen.getHeight()/2) - (height/2));
 		
-		frame.add(renderer);
+		frame.add(renderThread.getRenderer());
+		
+		renderThread.start();
 		
 		InputListener in = new InputListener();
 		
@@ -45,7 +48,7 @@ public class Display{
 	}
 	
 	public Renderer getRenderer(){
-		return renderer;
+		return renderThread.getRenderer();
 	}
 	
 	public void setTitle(String title){

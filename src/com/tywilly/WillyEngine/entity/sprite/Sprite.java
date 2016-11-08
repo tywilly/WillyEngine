@@ -15,9 +15,9 @@ public class Sprite extends Entity
 
     BufferedImage drawImg;
 
-    public Sprite(float x, float y, int layer, int height, int width, Texture texture)
+    public Sprite(float x, float y, int layer, int width, int height, Texture texture)
     {
-        super(x, y,layer, height, width);
+        super(x, y,layer, width, height);
 
         this.texture = texture;
 
