@@ -51,6 +51,10 @@ public class Display{
 		return renderThread.getRenderer();
 	}
 	
+	public RenderThread getRenderThread(){
+		return renderThread;
+	}
+	
 	public void setTitle(String title){
 		frame.setTitle(title);
 	}

@@ -80,7 +80,7 @@ public class InputListener implements KeyListener, MouseListener,
 	}
 
 	private void actionEvent(InputAction action) {
-
+		
 		for (int i = 0; i < SceneManager.getCurrentScene().getEntitysList()
 				.size(); i++) {
 

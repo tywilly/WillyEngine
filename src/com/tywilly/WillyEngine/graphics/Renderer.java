@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 
 import com.tywilly.WillyEngine.entity.Entity;
+import com.tywilly.WillyEngine.scene.Scene;
 import com.tywilly.WillyEngine.scene.SceneManager;
 
 public class Renderer extends JPanel {
@@ -45,23 +46,28 @@ public class Renderer extends JPanel {
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
 
-		for (int i = 0; i < SceneManager.getCurrentScene().getEntitysList()
-				.size(); i++) {
+		Scene renderScene = SceneManager.getCurrentScene();
+		
+		synchronized (renderScene) {
+			for (int i = 0; i < renderScene.getEntitysList()
+					.size(); i++) {
 
-			ArrayList<Entity> layer = SceneManager.getCurrentScene()
-					.getLayerList(i);
+				ArrayList<Entity> layer = renderScene.getLayerList(i);
 
-			for (int x = 0; x < layer.size(); x++) {
+				for (int x = 0; x < layer.size(); x++) {
 
-				Entity ent = layer.get(x);
+					Entity ent = layer.get(x);
 
-				ent.paint(g);
+					ent.paint(g);
+
+				}
 
 			}
-
 		}
-
 		
+		startTime = System.currentTimeMillis() - startTime;
+		
+		Renderer.fps = (int) (1000/startTime);
 		
 		//repaint();
 

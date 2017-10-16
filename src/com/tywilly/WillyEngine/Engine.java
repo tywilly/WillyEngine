@@ -7,7 +7,7 @@ public class Engine {
 
 	public static Display display;
 	
-	UpdateThread updateThread;
+	private static UpdateThread updateThread;
 	
 	public Engine(Display display){
 		
@@ -21,6 +21,10 @@ public class Engine {
 		
 		updateThread.start();
 		
+	}
+	
+	public static UpdateThread getUpdateThread(){
+		return updateThread;
 	}
 	
 }

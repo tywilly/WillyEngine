@@ -17,13 +17,14 @@ public class DebugInfo extends Text implements Updateable{
 	public void update(long mili) {
 		// TODO Auto-generated method stub
 		
-		if(currTick >= Display.TPS){
-			this.setText("FPS: " + Display.TPS);
-			currTick = 0;
-		}
+//		if(currTick >= Display.TPS){
+//			this.setText("FPS: " + Display.TPS);
+//			currTick = 0;
+//		}
+//		
+//		currTick++;
 		
-		currTick++;
-		
+		this.setText("FPS: " + Display.TPS);
 		
 	}
 

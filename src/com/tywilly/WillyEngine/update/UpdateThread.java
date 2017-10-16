@@ -2,15 +2,18 @@ package com.tywilly.WillyEngine.update;
 
 import java.util.ArrayList;
 
-import com.tywilly.WillyEngine.display.Display;
 import com.tywilly.WillyEngine.entity.Entity;
-import com.tywilly.WillyEngine.graphics.Renderer;
+import com.tywilly.WillyEngine.input.Input;
+import com.tywilly.WillyEngine.input.InputAction;
+import com.tywilly.WillyEngine.scene.Scene;
 import com.tywilly.WillyEngine.scene.SceneManager;
 
 public class UpdateThread extends Thread implements Runnable {
 
 	private boolean isRunning = true;
 
+	private ArrayList<InputAction> inputEvents = new ArrayList<>();
+	
 	private long startTime = 0;
 	private long delta = 0;
 
@@ -26,20 +29,26 @@ public class UpdateThread extends Thread implements Runnable {
 
 			startTime = System.currentTimeMillis();
 
-			for (int i = 0; i < SceneManager.getCurrentScene().getEntitysList()
-					.size(); i++) {
+			Scene updateScene = SceneManager.getCurrentScene();
 
-				ArrayList<Entity> layer = SceneManager.getCurrentScene()
-						.getLayerList(i);
+			synchronized (updateScene) {
 
-				for (int x = 0; x < layer.size(); x++) {
+				for (int i = 0; i < updateScene.getEntitysList().size(); i++) {
 
-					if (x < layer.size()) {
+					ArrayList<Entity> layer = updateScene.getLayerList(i);
 
-						Entity ent = layer.get(x);
+					for (int x = 0; x < layer.size(); x++) {
 
-						if (ent instanceof Updateable) {
-							((Updateable) ent).update(delta);
+						if (x < layer.size()) {
+
+							Entity ent = layer.get(x);
+
+							if (ent instanceof Updateable) {
+								((Updateable) ent).update(delta);
+							}
+							
+							//FIND A WAY TO ONLY RUN AN INPUT FOR THE SPECIFIED ENT
+
 						}
 
 					}
@@ -49,9 +58,13 @@ public class UpdateThread extends Thread implements Runnable {
 			}
 
 			delta = System.currentTimeMillis() - startTime;
-			
+
 		}
 
 	}
 
+	public void queueInputAction(InputAction ia){
+		this.inputEvents.add(ia);
+	}
+	
 }
